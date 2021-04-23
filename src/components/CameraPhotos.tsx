@@ -93,21 +93,24 @@ function CameraPhotos({ onSelect }: CameraPhotosProps) {
         ],
       }}
     >
-      <View
-        style={{
-          marginBottom: 32,
-          alignItems: 'center',
-        }}
-      >
+      {infoPhotos?.edges?.length ? (
         <View
           style={{
-            width: 60,
-            height: 5,
-            backgroundColor: 'white',
-            borderRadius: 5,
+            marginBottom: 32,
+            alignItems: 'center',
           }}
-        />
-      </View>
+        >
+          <View
+            style={{
+              width: 60,
+              height: 5,
+              backgroundColor: 'white',
+              borderRadius: 5,
+            }}
+          />
+        </View>
+      ) : null}
+
       <FlatList
         data={infoPhotos?.edges ?? []}
         horizontal

@@ -30,7 +30,7 @@ function CameraControl({
           </TouchableOpacity>
         </View>
 
-        <View style={styles.column}>
+        <View style={[styles.column, styles.centerColumn]}>
           <TouchableOpacity activeOpacity={0.8} onPress={onTakePhoto}>
             <MaterialCommunityIcons
               name="checkbox-blank-circle-outline"
@@ -42,7 +42,7 @@ function CameraControl({
           </TouchableOpacity>
         </View>
 
-        <View style={styles.column}>
+        <View style={[styles.column, styles.lastColumn]}>
           <TouchableOpacity activeOpacity={0.8} onPress={onChangeCamera}>
             <MaterialCommunityIcons
               name="camera-outline"
@@ -66,6 +66,12 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'flex-start',
     justifyContent: 'center',
+  },
+  centerColumn: {
+    alignItems: 'center',
+  },
+  lastColumn: {
+    alignItems: 'flex-end',
   },
 });
 
