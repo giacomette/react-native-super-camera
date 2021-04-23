@@ -11,11 +11,17 @@ npm install react-native-super-camera
 ## Usage
 
 ```js
-import SuperCamera from "react-native-super-camera";
+import SuperCamera from 'react-native-super-camera';
 
 // ...
 
-const result = await SuperCamera.multiply(3, 7);
+<SuperCamera
+  visible={open}
+  onCancel={() => console.log('cancel take photo')}
+  onCapture={(fileUrl) => {
+    console.log(fileUrl);
+  }}
+/>;
 ```
 
 ## Contributing

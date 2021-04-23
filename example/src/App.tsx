@@ -1,18 +1,35 @@
+/* eslint-disable react-native/no-inline-styles */
 import * as React from 'react';
 
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Image, Button } from 'react-native';
 import SuperCamera from 'react-native-super-camera';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
-
-  React.useEffect(() => {
-    SuperCamera.multiply(3, 7).then(setResult);
-  }, []);
+  const [open, setOpen] = React.useState(false);
+  const [image, setImage] = React.useState<string>();
 
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Button title="Abrir Camera" onPress={() => setOpen(true)} />
+      <SuperCamera
+        visible={open}
+        onCancel={() => setOpen(false)}
+        onCapture={(fileUrl) => {
+          setImage(fileUrl);
+          setOpen(false);
+        }}
+      />
+
+      {image ? (
+        <Image
+          style={{
+            marginTop: 32,
+            width: 100,
+            height: 100,
+          }}
+          source={{ uri: image }}
+        />
+      ) : null}
     </View>
   );
 }
